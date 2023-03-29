@@ -9,7 +9,7 @@ resource "aws_launch_template" "main" {
   }
 
   instance_type = var.instance_type
-  vpc_security_group_ids = ["aws_security_group.main.id"]
+  vpc_security_group_ids = [aws_security_group.main.id]
 
   tag_specifications {
     resource_type = "instance"
