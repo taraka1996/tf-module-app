@@ -21,7 +21,7 @@ resource "aws_iam_policy" "main" {
         //          "arn:aws:ssm:us-east-1:${data.aws_caller_identity.account.account_id}:parameter/${var.env}.elasticache.*"
         //          /// How to limit this permissions, which are unwanted for all components
         //        ]
-        Resource : [for k in local.parameters : "arn:aws:ssm:us-east-1:${data.aws_caller_identity.account.account_id}:parameter/${var.env}.${k}.*"]
+        Resource : "arn:aws:ssm:us-east-1:${data.aws_caller_identity.account.account_id}:parameter/${var.env}.${var.component}*"
       },
       {
         "Sid" : "VisualEditor1",
