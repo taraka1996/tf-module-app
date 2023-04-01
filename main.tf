@@ -93,10 +93,10 @@ resource "aws_lb_target_group" "main" {
     path                = "/health"
   }
   tags = merge(
-    var.tags,
-    { Name = "${var.component}-${var.env}" }
-  )
-}
+      var.tags,
+      { Name = "${var.component}-${var.env}", Monitor = "yes" }
+    )
+  }
 
 resource "aws_route53_record" "main" {
   zone_id = data.aws_route53_zone.domain.zone_id
