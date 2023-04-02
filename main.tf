@@ -69,7 +69,7 @@ resource "aws_launch_template" "main" {
     from_port   = var.port
     to_port     = var.port
     protocol    = "tcp"
-    cidr_blocks = var.monitoring_nodes
+    cidr_blocks = var.allow_app_to
   }
 
   ingress {
@@ -77,7 +77,7 @@ resource "aws_launch_template" "main" {
     from_port   = 9100  
     to_port     = 9100
     protocol    = "tcp"
-    cidr_blocks = var.allow_app_to
+    cidr_blocks = var.monitoring_nodes
   }
 
 
