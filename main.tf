@@ -20,7 +20,7 @@ resource "aws_launch_template" "main" {
 
    tags = merge(
         var.tags, 
-        { Name = "${var.component}- ${var.env}" }
+        { Name = "${var.component}- ${var.env}", Monitor = "yes" }
     )
   }
 
@@ -43,8 +43,14 @@ resource "aws_launch_template" "main" {
     id      = aws_launch_template.main.id
     version = "$Latest"
   }
+   tag {
+    key                 = "Name"
+    propagate_at_launch = true
+    value               = "${var.component}-${var.env}"
+  }
+}
 
- } 
+
  resource "aws_security_group" "main" {
   name        = "${var.component}-${var.env}"
   description = "${var.component}-${var.env}"
