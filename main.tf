@@ -60,7 +60,7 @@ resource "aws_launch_template" "main" {
     }
     target_value = 40.0
   }
-
+}
    
  resource "aws_security_group" "main" {
   name        = "${var.component}-${var.env}"
